@@ -13,6 +13,7 @@ min_intentos = 0
 rol = None
 #De esta variable depende la ejecucion del agente
 sistema_activo = True
+mensaje = ""
 
 #Iniciamos nuestros sistema solicitando el tipo usuario que lo utilizara
 print("-----Quien utilizara el sistema (Invitado - Administrador)------\n")
@@ -55,9 +56,12 @@ while mx_intentos > min_intentos:
                     cmd = input("Agente>: ").lower()
                     if cmd == "salir":
                         print("------Agente apagado. Vuelve pronto.------")
+                        mensaje = "Se ha solicitado terminar la sesión."
                         sistema_activo = False
+                    #comando ping imprime un pong
                     elif cmd == "ping":
                         print("pong!")
+                        mensaje = "Se ha enviado un ping y de respuesta se devolvió un pong."
                     elif cmd =="contar":
                         palabra = input("Ingrese una palabra: ").lower()
                         tot_letras = len(palabra)
@@ -72,6 +76,10 @@ while mx_intentos > min_intentos:
                         print(f"Total de vocales: {tot_vocales}")
                         print(f"Total de consonantes: {tot_cons}")
                         print(f"Total de letras: {tot_letras}")
+                        mensaje = f"""Se solicitó el conteo de la palabra {palabra}, dando como resultados:
+                        Vocales: {tot_vocales}
+                        Consonantes: {tot_cons}
+                        Total: {tot_letras}"""
                     #Inicia calculadora, solicita los 2 caracteres numericos y la operacion
                     elif cmd == "calculadora":
                         num1 = int(input("Ingrese primer digito numerico: "))
@@ -90,13 +98,17 @@ while mx_intentos > min_intentos:
                                     resultado = num1 / num2
                                 else:
                                     resultado = "Error: No se puede dividir por cero"
+                                    mensaje = "Error: No se puede dividir por cero"
                         else:
                                 #Si el comando ingresado no es valido finaliza calculadora pero continua en consola
                                 resultado = "Operador no válido"
+                                mensaje = "Operador no válido"
                         #Imprime el resultado de la calculadora si logro realizar la operacion correctamente
                         print(f"El resultado es: {resultado}")
+                        mensaje = f"Se ejecuto el comando calculadora con el resultado: {resultado}"
                     else:
                         print("------Comando desconocido. Intente de nuevo.-------")
+                        mensaje = "Comando desconocido. Intente de nuevo"
                 break
             else:
                 print("Contraseña incorrecta")
@@ -120,10 +132,13 @@ while mx_intentos > min_intentos:
                     cmd = input("Agente>: ").lower()
                     if cmd == "salir":
                         print("------Agente apagado. Vuelve pronto.------")
+                        mensaje = "Se ha solicitado terminar la sesión."
                         sistema_activo = False
                         break
+                    #comando ping imprime un pong
                     elif cmd == "ping":
                         print("pong!")
+                        mensaje = "Se ha enviado un ping y de respuesta se devolvió un pong."
                     elif cmd =="contar":
                         palabra = input("Ingrese una palabra: ").lower()
                         tot_letras = len(palabra)
@@ -138,6 +153,10 @@ while mx_intentos > min_intentos:
                         print(f"Total de vocales: {tot_vocales}")
                         print(f"Total de consonantes: {tot_cons}")
                         print(f"Total de letras: {tot_letras}")
+                        mensaje = f"""Se solicitó el conteo de la palabra {palabra}, dando como resultados:
+                        Vocales: {tot_vocales}
+                        Consonantes: {tot_cons}
+                        Total: {tot_letras}"""
                     #Inicia calculadora, solicita los 2 caracteres numericos y la operacion
                     elif cmd == "calculadora":
                         num1 = int(input("Ingrese primer digito numerico: "))
@@ -156,13 +175,17 @@ while mx_intentos > min_intentos:
                                     resultado = num1 / num2
                                 else:
                                     resultado = "Error: No se puede dividir por cero"
+                                    mensaje = "Error: No se puede dividir por cero"
                         else:
                                 #Si el comando ingresado no es valido finaliza calculadora pero continua en consola
                                 resultado = "Operador no válido"
+                                mensaje = "Operador no válido"
                         #Imprime el resultado de la calculadora si logro realizar la operacion correctamente
                         print(f"El resultado es: {resultado}")
+                        mensaje = f"Se ejecuto el comando calculadora con el resultado: {resultado}"
                     else:
                         print("------Comando desconocido. Intente de nuevo.-------")
+                        mensaje = "Comando desconocido. Intente de nuevo"                 
                 break
             #Si intentos es >= continuara solicitando la contraseña admin e invitado
             else:
